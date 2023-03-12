@@ -63,8 +63,10 @@ export default function UserList() {
         rows={data}
         disableSelectionOnClick
         columns={columns}
-        pageSize={8}
         checkboxSelection
+        pageSize={5}
+        pagination={true}
+        paginationMode="client"
       />
     </div>
   );

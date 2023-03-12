@@ -20,6 +20,9 @@ const columns = [
     field: "book_rating",
     headerName: "Rating",
     width: 90,
+    renderCell: (params)=> {
+      return parseFloat(params.row?.book_rating).toFixed(1)
+    }
   },
   {
     field: "book_description",
@@ -66,9 +69,11 @@ export default function BookList() {
         rows={data}
         disableSelectionOnClick
         columns={columns}
-        pageSize={8}
         checkboxSelection
         getRowHeight={() => 'auto'}
+        pageSize={5}
+        pagination={true}
+        paginationMode="client"
       />
     </div>
   );
