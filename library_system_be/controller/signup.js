@@ -11,7 +11,7 @@ const signup= asyncHandler(async (req, res)=> {
         }
         else {
             // eslint-disable-next-line
-            const [rows]= await connection.execute("INSERT INTO user VALUES(?, ?, ?, ?, ?, ?, ?)", [v4(), req.body.userName, req.body.email, req.body.phone, md5(req.body.password), req.body.address, 1])
+            const [rows]= await connection.execute("INSERT INTO user VALUES(?, ?, ?, ?, ?, ?, ?, ?)", [v4(), req.body.userName, req.body.email, req.body.phone, md5(req.body.password), req.body.address, 1, new Date()])
             return res.status(200).json({signup: true, exist: false})
         }
     } catch (error) {

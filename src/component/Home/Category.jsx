@@ -15,7 +15,7 @@ const Category = () => {
                 </div>
             </div>
             <div>
-                <div style={{textAlign: 'center', margin: "12px 0"}}>Fiction books</div>
+                <div style={{textAlign: 'center', margin: "12px 0"}}>Non fiction books</div>
                 <div style={{width: 300, flexWrap: "wrap", gap: 20}} className={"c-flex-center"}>
                     <div style={{padding: "10px 30px", borderRadius: 80, border: "1px solid #000", width: 130}}>Art</div>
                     <div style={{padding: "10px 30px", borderRadius: 80, border: "1px solid #000", width: 130}}>Biology</div>

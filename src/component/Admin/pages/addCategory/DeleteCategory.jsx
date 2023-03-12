@@ -58,7 +58,7 @@ export default function DeleteCategory(props) {
               else {
                 swal("Thông báo", "Error", "error")
               }
-          }}>Lưu</Button>
+          }}>Xóa</Button>
           <Button onClick={handleClose}>Hủy</Button>
         </DialogActions>
       </Dialog>

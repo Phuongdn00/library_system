@@ -8,6 +8,9 @@ const get_cart= async ()=> {
         method: "get",
         params: {
             user_id: Cookies.get("uid")
+        },
+        headers: {
+            "authorization": "Bearer "+ Cookies.get("accessToken")
         }
     })
     const result= await res.data

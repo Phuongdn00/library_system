@@ -4,8 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import {AiFillDelete } from "react-icons/ai"
 import get_cart from '../../api/get_cart'
 // eslint-disable-next-line
-import add_cart from '../../api/add_cart'
+// import add_cart from '../../api/add_cart'
 import delete_cart from '../../api/delete_cart'
+import PendingIcon from '@mui/icons-material/Pending';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Cart = () => {
   const navigate= useNavigate()
@@ -32,11 +35,11 @@ const Cart = () => {
         {
           data?.map((item, key)=> <ComponentCart key={key} {...item} data={data} setData={setData} />)
         }
-        <div style={{width: "100%", direction: "rtl", margin: "12px 0"}}>
+        {/* <div style={{width: "100%", direction: "rtl", margin: "12px 0"}}>
           <div style={{width: 300, height: 50, borderRadius: 10, background: "#4DE1C1", color: "#fff", cursor: "pointer"}} className={"c-flex-center"}>
             Check out
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )
@@ -48,27 +51,31 @@ export const ComponentCart= (props)=> {
   const navigate= useNavigate()
 
   return (
-    <div onClick={()=> navigate("/book/"+ props?.book_id)} style={{marginBottom: 12, width: "100%", padding: 10, borderRadius: 10, border: "1px solid #e7e7e7", display: "flex", justifyContent: "space-between", alignItems: 'center', cursor: "pointer"}}>
+    <div style={{marginBottom: 12, width: "100%", padding: 10, borderRadius: 10, border: "1px solid #e7e7e7", display: "flex", justifyContent: "space-between", alignItems: 'center', cursor: "pointer"}}>
       <div style={{display: "flex", gap: 16}}>
-        <div style={{width: "150px"}}>
+        <div style={{width: "150px"}} onClick={()=> navigate("/book/"+ props?.book_id)} >
           <img style={{width: "100%", aspectRatio: 2 / 3, borderRadius: 10}} src={props?.cover_photo} alt="" />
         </div>
         <div style={{}}>
           <div style={{fontSize: 18, fontWeight: 600, marginBottom: 12}}>{props?.book_name}</div>
-          <div>Dale Carnegie</div>
+          <div>{props?.author_name}</div>
+          {
+            props?.is_history=== true && <div>Trạng thái:&nbsp;
+              {
+                parseInt(props?.state )=== 1 && <div style={{display: "flex", alignItmems: "center", gap: 10}}><strong>Đã duyệt </strong> <CheckIcon style={{color: "#2dc275"}} /></div>
+              }
+              {
+                parseInt(props?.state )=== 0 && <div style={{display: "flex", alignItmems: "center", gap: 10}}> <strong>Đang chờ duyệt</strong> <PendingIcon /> </div>
+              }
+              {
+                parseInt(props?.state )=== 2 && <div style={{display: "flex", alignItmems: "center", gap: 10}}><strong>Bị từ chối </strong><CloseIcon style={{color: "red"}} /> </div>
+              }
+            </div>
+          }
         </div>
       </div>
       <div style={{display: "flex", justifyContent: "center", alignItems: 'center '}}>
-        {/* <div onClick={async ()=> {
-
-          const result= await add_cart(-1, props?.book_id)
-          setAmount(prev=> parseInt(prev) - parseInt(1))
-        }} style={{padding: 10, cursor: "pointer"}}>-</div> */}
         <div style={{padding: 10, fontWeight: 600}}>{amount}</div>
-        {/* <div onClick={async ()=> {
-          const result= await add_cart(1, props?.book_id)
-          setAmount(prev=> parseInt(prev) + parseInt(1))
-        }} style={{padding: 10, cursor: "pointer"}}>+</div> */}
       </div>
       <div onClick={async ()=> {
         // eslint-disable-next-line

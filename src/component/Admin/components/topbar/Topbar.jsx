@@ -15,6 +15,7 @@ export default function Topbar() {
   };
   const Logout= ()=> {
     Cookies.remove("uid")
+    Cookies.remove("accessToken")
     window.location.reload()
   }
 

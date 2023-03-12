@@ -102,6 +102,7 @@ const UserProfile = (props) => {
                     className="button"
                     onClick={() => {
                         Cookies.remove("uid")
+                        Cookies.remove("accessToken")
                         window.location.reload()
                     }}
                 >

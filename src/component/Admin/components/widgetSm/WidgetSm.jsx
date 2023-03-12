@@ -1,86 +1,23 @@
 import "./widgetSm.css";
-import { Visibility } from "@material-ui/icons";
+// import { Visibility } from "@material-ui/icons";
+import DetailProfile from "../../../Staff/Component/WidgetSm/DetailProfile";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-export default function WidgetSm() {
+export default function WidgetSm(props) {
   return (
     <div className="widgetSm">
-      <span className="widgetSmTitle">Người dùng mới</span>
+      <span className="widgetSmTitle">New users</span>
       <ul className="widgetSmList">
-        <li className="widgetSmListItem">
-          <img
-            src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUsername">Anna Keller</span>
-            <span className="widgetSmUserTitle">Software Engineer</span>
-          </div>
-          <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
-            <div>Display</div>
-          </button>
-        </li>
-        <li className="widgetSmListItem">
-          <img
-            src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUsername">Anna Keller</span>
-            <span className="widgetSmUserTitle">Software Engineer</span>
-          </div>
-          <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
-            Display
-          </button>
-        </li>
-        <li className="widgetSmListItem">
-          <img
-            src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUsername">Anna Keller</span>
-            <span className="widgetSmUserTitle">Software Engineer</span>
-          </div>
-          <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
-            Display
-          </button>
-        </li>
-        <li className="widgetSmListItem">
-          <img
-            src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUsername">Anna Keller</span>
-            <span className="widgetSmUserTitle">Software Engineer</span>
-          </div>
-          <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
-            Display
-          </button>
-        </li>
-        <li className="widgetSmListItem">
-          <img
-            src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUsername">Anna Keller</span>
-            <span className="widgetSmUserTitle">Software Engineer</span>
-          </div>
-          <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
-            Display
-          </button>
-        </li>
+        {props?.data?.map((item, key) => (
+          <li key={key} className="widgetSmListItem">
+            <AccountCircleIcon style={{width: 40, height: 40}} />
+            <div className="widgetSmUser">
+              <span className="widgetSmUsername">{item?.user_name}</span>
+              <span className="widgetSmUserTitle">{item?.user_phone}</span>
+            </div>
+            <DetailProfile {...item} />
+          </li>
+        ))}
       </ul>
     </div>
   );

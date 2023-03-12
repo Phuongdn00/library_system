@@ -1,5 +1,6 @@
 import axios from "axios"
 import { API_URL } from "../../config"
+import Cookies from "js-cookie"
 
 const delete_category= async (id)=> {
     const res= await axios({
@@ -7,6 +8,9 @@ const delete_category= async (id)=> {
         method: "post",
         data: {
            id
+        },
+        headers: {
+            "authorization": "Bearer "+ Cookies.get("accessToken")
         }
     })
     const result= await res.data

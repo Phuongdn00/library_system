@@ -26,7 +26,7 @@ const History = () => {
             <div style={{ width: "100%", margin: "24px 0" }}>
                 {/*  */}
                 {
-                    data?.map((item, key) => <ComponentCart key={key} {...item} data={data} setData={setData} />)
+                    data?.map((item, key) => <ComponentCart is_history={true} key={key} {...item} data={data} setData={setData} />)
                 }
                 {/* <div style={{ width: "100%", direction: "rtl", margin: "12px 0" }}>
                     <div style={{ width: 300, height: 50, borderRadius: 10, background: "#4DE1C1", color: "#fff", cursor: "pointer" }} className={"c-flex-center"}>

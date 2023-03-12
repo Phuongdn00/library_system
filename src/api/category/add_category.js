@@ -1,4 +1,5 @@
 import axios from "axios"
+import Cookies from "js-cookie"
 import { API_URL } from "../../config"
 
 const add_category= async (category_name)=> {
@@ -7,6 +8,9 @@ const add_category= async (category_name)=> {
         method: "post",
         data: {
            category_name
+        },
+        headers: {
+            "authorization": "Bearer "+ Cookies.get("accessToken")
         }
     })
     const result= await res.data

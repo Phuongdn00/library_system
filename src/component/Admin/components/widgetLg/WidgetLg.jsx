@@ -1,79 +1,41 @@
 import "./widgetLg.css";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import moment from "moment";
 
-export default function WidgetLg() {
+export default function WidgetLg(props) {
   const Button = ({ type }) => {
     return <button className={"widgetLgButton " + type}>{type}</button>;
   };
   return (
     <div className="widgetLg">
-      <h3 className="widgetLgTitle">Lịch sử mới nhất</h3>
+      <h3 className="widgetLgTitle">History transaction</h3>
       <table className="widgetLgTable">
         <tr className="widgetLgTr">
           <th className="widgetLgTh">Customer</th>
-          <th className="widgetLgTh">Date</th>
-          <th className="widgetLgTh">Amount</th>
+          <th className="widgetLgTh">Time approve</th>
+          <th className="widgetLgTh">Book</th>
           <th className="widgetLgTh">Status</th>
         </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Susan Carol</span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgAmount">$122.00</td>
-          <td className="widgetLgStatus">
-            <Button type="Approved" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Susan Carol</span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgAmount">$122.00</td>
-          <td className="widgetLgStatus">
-            <Button type="Declined" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Susan Carol</span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgAmount">$122.00</td>
-          <td className="widgetLgStatus">
-            <Button type="Pending" />
-          </td>
-        </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Susan Carol</span>
-          </td>
-          <td className="widgetLgDate">2 Jun 2021</td>
-          <td className="widgetLgAmount">$122.00</td>
-          <td className="widgetLgStatus">
-            <Button type="Approved" />
-          </td>
-        </tr>
+        {props?.data?.map((item, key) => (
+          <tr key={key} className="widgetLgTr">
+            <td className="widgetLgUser">
+              <AccountCircleIcon style={{ width: 40, height: 40 }} />
+              <span className="widgetLgName">{item?.user_name}</span>
+            </td>
+            <td className="widgetLgDate">{moment(item?.time_approve).format("DD-MM-YYYY HH:mm:ss")}</td>
+            <td className="widgetLgAmount">{item?.book_name}</td>
+            <td className="widgetLgStatus">
+              {
+                parseInt(item?.state)=== 1 && 
+                <Button type="Approved" />
+              }
+              {
+                parseInt(item?.state)=== 2 && 
+                <Button type="Declined" />
+              }
+            </td>
+          </tr>
+        ))}
       </table>
     </div>
   );
