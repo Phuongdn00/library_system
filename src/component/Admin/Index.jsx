@@ -8,6 +8,7 @@ import NewUser from "./pages/newUser/NewUser";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Category from "./pages/addCategory/Category";
 import BookList from "./pages/book-list/Book";
+import ManageStaff from "./pages/staff/ManageStaff";
 
 function IndexAdmin() {
   return (
@@ -28,6 +29,7 @@ function IndexAdmin() {
                 </Route>
                 <Route path="/category" element={<Category />} />
                 <Route path={"/book/show"} element={<BookList />} />
+                <Route path={"/staff"} element={<ManageStaff />} />
             </Routes>
         </div>
       </>

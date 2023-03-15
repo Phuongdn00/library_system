@@ -9,10 +9,13 @@ import delete_cart from '../../api/delete_cart'
 import PendingIcon from '@mui/icons-material/Pending';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
+import checkout from '../../api/checkout'
+import swal from 'sweetalert'
 
 const Cart = () => {
   const navigate= useNavigate()
   const [data, setData]= useState([])
+  const [chooseBook, setChooseBook]= useState()
   useEffect(()=> {
     (async ()=> {
       const result= await get_cart()
@@ -33,13 +36,22 @@ const Cart = () => {
       <div style={{width: "100%", margin: "24px 0"}}>
         {/*  */}
         {
-          data?.map((item, key)=> <ComponentCart key={key} {...item} data={data} setData={setData} />)
+          data?.map((item, key)=> <ComponentCart chooseBook={chooseBook} setChooseBook={setChooseBook} index={parseInt(key) + 1} key={key} {...item} data={data} setData={setData} />)
         }
-        {/* <div style={{width: "100%", direction: "rtl", margin: "12px 0"}}>
-          <div style={{width: 300, height: 50, borderRadius: 10, background: "#4DE1C1", color: "#fff", cursor: "pointer"}} className={"c-flex-center"}>
+        <div style={{width: "100%", direction: "rtl", margin: "12px 0"}}>
+          <div onClick={()=> {
+            if(chooseBook) {
+              checkout(chooseBook)
+              swal("Notice", "Your request is sent successfully", "success")
+              .then(()=> setData(data?.filter(item=> item.book_id !== chooseBook)))
+            }
+            else {
+              swal("Notice", "You need to choose a book")
+            }
+          }} style={{width: 300, height: 50, borderRadius: 10, background: "#4DE1C1", color: "#fff", cursor: "pointer"}} className={"c-flex-center"}>
             Check out
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   )
@@ -51,7 +63,12 @@ export const ComponentCart= (props)=> {
   const navigate= useNavigate()
 
   return (
-    <div style={{marginBottom: 12, width: "100%", padding: 10, borderRadius: 10, border: "1px solid #e7e7e7", display: "flex", justifyContent: "space-between", alignItems: 'center', cursor: "pointer"}}>
+    <div onClick={()=> {
+      props?.setChooseBook(props?.book_id)
+      
+    }}
+    // eslint-disable-next-line
+     style={{marginBottom: 12, width: "100%", padding: 10, borderRadius: 10, border: (props?.book_id) == (props?.chooseBook) ? "1px solid #2e89ff" : "1px solid #e7e7e7", display: "flex", justifyContent: "space-between", alignItems: 'center', cursor: "pointer"}}>
       <div style={{display: "flex", gap: 16}}>
         <div style={{width: "150px"}} onClick={()=> navigate("/book/"+ props?.book_id)} >
           <img style={{width: "100%", aspectRatio: 2 / 3, borderRadius: 10}} src={props?.cover_photo} alt="" />
