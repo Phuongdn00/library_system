@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import Slider from "react-slick";
 // eslint-disable-next-line
@@ -7,9 +7,10 @@ import Category from './Category';
 import get_release_book from '../../api/get_release_book';
 // import { useNavigate } from 'react-router-dom';
 import ComponentBook from '../ComponentBook/ComponentBook';
-import { AppContext } from '../../App';
-import Search from '../Search/Search';
+// import { AppContext } from '../../App';
+// import Search from '../Search/Search';
 import get_most_popular_book from '../../api/get_most_popular_book';
+import Footer from '../Footer/Footer';
 
 const settings = {
     dots: true,
@@ -22,28 +23,29 @@ const settings = {
 const Home = () => {
 
   const [searchOn, setSearchOn]= useState(()=> false)
-  const {isSeaching, searchResult }= useContext(AppContext)
+//   const {isSeaching, searchResult }= useContext(AppContext)
 
   return (
     <div style={{width: "100%"}}>
         <Header searchOn={searchOn} setSearchOn={setSearchOn} />
-        {
+        {/* {
             searchOn=== true && <div style={{padding: 20, width: "100%"}} className={"c-flex-center"}>
             
             </div>
-        }
-        {
+        } */}
+        {/* {
             isSeaching=== true && searchResult?.length > 0 &&  <Search />
-        }
-        {
+        } */}
+        {/* {
             isSeaching=== true && searchResult?.length <= 0 && <div style={{padding: 10, textAlign: "center", fontSize: 18, fontWeight: 600}}>Not found any results</div> 
-        }
+        } */}
         <Category />
         <div style={{width: "100%", padding: 20}}>
             <NewRelease />
             <br /><br />
             <MostPopular />
         </div>
+        <Footer />
     </div>
   )
 }

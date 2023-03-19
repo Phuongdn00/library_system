@@ -18,6 +18,7 @@ import History from "./component/History/History";
 import Staff from "./component/Staff/Staff";
 import Chat from "./component/Chat/Chat";
 import Socket from "./component/Socket/Socket";
+import Category from "./component/Category/Category";
 
 export const AppContext = createContext();
 const App = () => {
@@ -73,6 +74,7 @@ const App = () => {
               <Route path={"/cart"} element={<Cart />} />
               <Route path={"/search"} element={<Search />} />
               <Route path="/history" element={<History />} />
+              <Route path={"/category/:category_id"} element={<Category />} />
               <Route
                 path={"/book/:book_id"}
                 element={
