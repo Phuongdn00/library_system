@@ -55,5 +55,5 @@ router.get("/api/v3/staff/conversation", get_detail_conversation)
 router.get("/api/v2/get_dashboard", get_dashboard)
 router.get("/api/v2/stats", stats)
 router.post("/api/v1/checkout", checkout)
-router.get("/api/v1/category/list/book", verifyToken, category2.getListBookByCategory)
+router.get("/api/v1/category/list/book", category2.getListBookByCategory)
 module.exports= router
