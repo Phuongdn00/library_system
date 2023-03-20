@@ -25,10 +25,11 @@ const Header = (props) => {
                     Home
                 </NavLink>
                 <DropDownCategory />
-                <Search {...props} />
+                
             </div>
             {/* right side */}
             <div style={{display: "flex", alignItems: "center", gap: 24}}>
+            <Search {...props} />
                 {
                     auth=== false && 
                     <div className={"h-e-1"} onClick={()=> navigate("/login?redirect_url="+ window.location.origin)} style={{fontSize: 17, cursor: "pointer"}}>Log in</div>
