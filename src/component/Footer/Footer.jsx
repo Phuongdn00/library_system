@@ -13,6 +13,7 @@ const Footer = () => {
               <p><box-icon name='map' ></box-icon> Phòng 105, Toà nhà Beta, Đai học FPT, Khu đô thị FPT City, Ngũ Hành Sơn, Đà Nẵng</p>
               <p><box-icon name='envelope' ></box-icon>  thuvienfudn@fpt.fe.edu</p>
               <p><box-icon name='phone' ></box-icon>  0987 123 321</p>
+              <p><box-icon name='time-five' ></box-icon>  Mở cửa: 08:00 - 17:00 Mỗi ngày </p>
             </ul>
           </div>
         </div>

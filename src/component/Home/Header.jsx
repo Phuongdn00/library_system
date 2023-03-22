@@ -25,7 +25,12 @@ const Header = (props) => {
                     Home
                 </NavLink>
                 <DropDownCategory />
-                
+                <NavLink aria-current={"page"} className={"nav-link"}  to={"/"} style={{color: "#000", fontSize: 18, height: 60, display: "flex", justifyContent: "center", alignItems: 'center', padding: 10}}>
+                    About
+                </NavLink>
+                <NavLink aria-current={"page"} className={"nav-link"}  to={"/"} style={{color: "#000", fontSize: 18, height: 60, display: "flex", justifyContent: "center", alignItems: 'center', padding: 10}}>
+                    News
+                </NavLink>
             </div>
             {/* right side */}
             <div style={{display: "flex", alignItems: "center", gap: 24}}>

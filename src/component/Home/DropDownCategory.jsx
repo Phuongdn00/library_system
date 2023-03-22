@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 import { NavLink } from "react-router-dom";
 import MenuCategory from "./MenuCategory";
+import 'boxicons'
 
 const DropDownCategory = () => {
 //   const location= useLocation()
@@ -31,7 +32,7 @@ const DropDownCategory = () => {
             padding: 10,
         }}
         >
-        Category
+        Category <box-icon name='chevron-down'></box-icon> 
         </NavLink>
         <MenuCategory anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
     </OutsideClickHandler>
