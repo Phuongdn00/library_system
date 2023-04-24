@@ -50,7 +50,7 @@ const NewRelease= ()=> {
     }, [])
     return (
         <div style={{width: "100%"}}>
-            <Title title={"New Release"} />
+            <Title title={"Maybe you like"} />
             <div style={{width: "100%"}}>
                 <Slider {...settings}>
                     {

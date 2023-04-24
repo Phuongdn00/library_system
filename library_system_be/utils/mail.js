@@ -4,8 +4,8 @@ const nodemailer= require("nodemailer")
 const transporter= nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "datistpham@gmail.com",
-        pass: "ekicxahksexlcegn"
+        user: "thuvienfudn@gmail.com",
+        pass: "wyxiaiqdiyzgxlfg"
     }
 })
 
@@ -14,7 +14,7 @@ const transporter= nodemailer.createTransport({
 const verifyMail= async (email, code)=> {
     try {
         // send email with specified content to specified email address
-        const result= await transporter.sendMail({from: "datistpham@gmail.com", to: email, subject: "Verify your email", text: "Your code is: "+ code})
+        const result= await transporter.sendMail({from: "thuvienfudn@gmail.com", to: email, subject: "Verify your email", text: "Your code is: "+ code})
         return result
         
     } catch (error) {
